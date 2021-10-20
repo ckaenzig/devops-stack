@@ -25,6 +25,9 @@
     </div>    
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
         <a class="navbar-item" href="https://github.com/camptocamp/devops-stack"><i class="fa fa-github-alt"></i>&nbsp;GitHub</a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Products</a>
@@ -76,6 +79,9 @@
     <a class="nav-link" href="../../../howtos/quickstart_aks.html">AKS</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/quickstart_sks.html">SKS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../../howtos/quickstart_ocp_ipi_aws.html">OpenShift (IPI) on AWS</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -83,6 +89,24 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../../howtos/quickstart_k3s_libvirt.html">K3s on Libvirt</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Pipelines</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/pipelines.html">Deploying with Pipelines</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/pipelines_gitlab.html">Create your GitLab Pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/pipelines_github.html">Create your Github Pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/pipelines_terraform_resource_migration.html">Operating terraform state using Pipeline</a>
   </li>
 </ul>
   </li>
@@ -100,6 +124,21 @@
     <a class="nav-link" href="../../../howtos/release.html">Release a new version</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Deploy Your App</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/deploy_own_app.html">Deploy Your App</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../howtos/continuous_delivery_gitflow_workflow.html">Continous Deployment for a Gitflow Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../howtos/filebeat_logging.html">Filebeat logging</a>
   </li>
 </ul>
   </li>
@@ -134,6 +173,9 @@
   </li>
   <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="aws.html">OpenShift 4 on AWS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../sks/exoscale.html">Exoscale SKS</a>
   </li>
 </ul>
   </li>
@@ -184,9 +226,6 @@
     <a class="nav-link" href="../../applications/vault.html">Vault</a>
   </li>
 </ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../changelog.html">Changelog</a>
   </li>
 </ul>
   </li>
@@ -298,7 +337,7 @@
     <a class="version is-missing" href="../../../../0.30.0/index.html">0.30.0</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/camptocamp/devops-stack/edit/master/docs/modules/ROOT/pages/references/terraform_modules/openshift4/aws.adoc"><i class="fa fa-github-alt"></i>&nbsp;Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/ckaenzig/devops-stack/edit/master/docs/modules/ROOT/pages/references/terraform_modules/openshift4/aws.adoc"><i class="fa fa-github-alt"></i>&nbsp;Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -376,19 +415,21 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="module_argocd"></a> <a href="#module_argocd">argocd</a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="module_cluster"></a> <a href="#module_cluster">cluster</a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>camptocamp/openshift4/aws</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0.1.0</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -521,10 +562,44 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="input_extra_app_projects"></a> <a href="#input_extra_app_projects">extra_app_projects</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Extra AppProjects objects to deploy.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>list(any)</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>[]</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>no</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="input_extra_application_sets"></a> <a href="#input_extra_application_sets">extra_application_sets</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Extra ApplicationSets objects to deploy.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>list(any)</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>[]</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>no</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="input_extra_apps"></a> <a href="#input_extra_apps">extra_apps</a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Extra applications to deploy.</p>
+<p>Extra Applications objects to deploy.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>list(any)</code></p>
@@ -633,6 +708,23 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="input_repositories"></a> <a href="#input_repositories">repositories</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A list of repositories to add to ArgoCD.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>map(map(string))</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>{}</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>no</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><a id="input_target_revision"></a> <a href="#input_target_revision">target_revision</a></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -643,6 +735,23 @@
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>"master"</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>no</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="input_wait_for_app_of_apps"></a> <a href="#input_wait_for_app_of_apps">wait_for_app_of_apps</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Allow to disable wait for app of apps</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>bool</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>true</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>no</p>
@@ -689,6 +798,14 @@
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The URL of the ArgoCD server.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="output_argocd_server_admin_password"></a> <a href="#output_argocd_server_admin_password">argocd_server_admin_password</a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The ArgoCD admin password.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -756,6 +873,9 @@
   window.antora.pagePath = '/devops-stack/latest/references/terraform_modules/openshift4/aws.html'
 </script>
 <script src="../../../../../_/js/site.js"></script>
+<script src="../../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../../_/js/vendor/search.js"></script>
+<script async src="../../../../../_/../search-index.js"></script>
 <script async src="../../../../../_/js/vendor/terraform.js"></script>
 <script async src="../../../../../_/js/vendor/highlight.js"></script>
   </body>

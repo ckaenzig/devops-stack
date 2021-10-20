@@ -25,6 +25,9 @@
     </div>    
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
         <a class="navbar-item" href="https://github.com/camptocamp/devops-stack"><i class="fa fa-github-alt"></i>&nbsp;GitHub</a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Products</a>
@@ -76,6 +79,9 @@
     <a class="nav-link" href="../../howtos/quickstart_aks.html">AKS</a>
   </li>
   <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/quickstart_sks.html">SKS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../howtos/quickstart_ocp_ipi_aws.html">OpenShift (IPI) on AWS</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -83,6 +89,24 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../howtos/quickstart_k3s_libvirt.html">K3s on Libvirt</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Pipelines</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/pipelines.html">Deploying with Pipelines</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/pipelines_gitlab.html">Create your GitLab Pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/pipelines_github.html">Create your Github Pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/pipelines_terraform_resource_migration.html">Operating terraform state using Pipeline</a>
   </li>
 </ul>
   </li>
@@ -100,6 +124,21 @@
     <a class="nav-link" href="../../howtos/release.html">Release a new version</a>
   </li>
 </ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Deploy Your App</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/deploy_own_app.html">Deploy Your App</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../howtos/continuous_delivery_gitflow_workflow.html">Continous Deployment for a Gitflow Workflow</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../howtos/filebeat_logging.html">Filebeat logging</a>
   </li>
 </ul>
   </li>
@@ -134,6 +173,9 @@
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../terraform_modules/openshift4/aws.html">OpenShift 4 on AWS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../terraform_modules/sks/exoscale.html">Exoscale SKS</a>
   </li>
 </ul>
   </li>
@@ -184,9 +226,6 @@
     <a class="nav-link" href="vault.html">Vault</a>
   </li>
 </ul>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../changelog.html">Changelog</a>
   </li>
 </ul>
   </li>
@@ -298,7 +337,7 @@
     <a class="version is-missing" href="../../../0.30.0/index.html">0.30.0</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/camptocamp/devops-stack/edit/master/docs/modules/ROOT/pages/references/applications/cert-manager.adoc"><i class="fa fa-github-alt"></i>&nbsp;Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/ckaenzig/devops-stack/edit/master/docs/modules/ROOT/pages/references/applications/cert-manager.adoc"><i class="fa fa-github-alt"></i>&nbsp;Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -318,12 +357,25 @@
 sources</p>
 </li>
 <li>
-<p>ensuring certificates are valid and up to date</p>
+<p>ensuring certificates are valid and up-to-date</p>
 </li>
 <li>
 <p>renewal of certificates at an appropriate time before expiry</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This chart must be instantiated in a sync-wave after the
+kube-prometheus-stack chart because it uses Prometheus Custom Resources.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -347,7 +399,7 @@ sources</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://charts.jetstack.io" class="bare">https://charts.jetstack.io</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cert-manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.3</p></td>
 </tr>
 </tbody>
 </table>
@@ -378,6 +430,12 @@ sources</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>{"installCRDs":true,"prometheus":{"servicemonitor":{"enabled":true}},"securityContext":{"fsGroup":999}}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Values passed to the cert-manager chart</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">letsencrypt.issuers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{"letsencrypt-prod":{"email":"<a href="mailto:letsencrypt@camptocamp.com">letsencrypt@camptocamp.com</a>","server":"https://acme-v02.api.letsencrypt.org/directory"},"letsencrypt-staging":{"email":"<a href="mailto:letsencrypt@camptocamp.com">letsencrypt@camptocamp.com</a>","server":"https://acme-staging-v02.api.letsencrypt.org/directory"}}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ClusterIssuers configuration</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -395,6 +453,9 @@ sources</p>
   window.antora.pagePath = '/devops-stack/latest/references/applications/cert-manager.html'
 </script>
 <script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/vendor/search.js"></script>
+<script async src="../../../../_/../search-index.js"></script>
 <script async src="../../../../_/js/vendor/terraform.js"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
   </body>
