@@ -13,8 +13,11 @@ locals {
 
   default_nodepools = {
     "router-${var.cluster_name}" = {
-      size          = 2
-      instance_type = "standard.large"
+      size                = 2
+      instance_type       = "standard.large"
+      instance_prefix     = "pool"
+      disk_size           = "50"
+      private_network_ids = []
     },
   }
 
@@ -41,8 +44,9 @@ provider "kubernetes" {
 }
 
 module "cluster" {
-  source  = "camptocamp/sks/exoscale"
-  version = "0.3.0"
+  source = "git::https://github.com/ckaenzig/terraform-exoscale-sks.git?ref=main"
+#  source  = "camptocamp/sks/exoscale"
+#  version = "0.3.0"
 
   kubernetes_version = var.kubernetes_version
   name               = var.cluster_name
