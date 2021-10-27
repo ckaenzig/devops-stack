@@ -16,3 +16,19 @@ output "keycloak_admin_password" {
 output "nlb_ip_address" {
   value = var.create_nlb ? exoscale_nlb.this[0].ip_address : null
 }
+
+output "kubernetes_host" {
+  value = local.kubernetes.host
+}
+
+output "kubernetes_cluster_ca_certificate" {
+  value = local.kubernetes.cluster_ca_certificate
+}
+
+output "kubernetes_client_key" {
+  value = local.kubernetes.client_key
+}
+
+output "kubernetes_client_certificate" {
+  value = local.kubernetes.client_certificate
+}
