@@ -21,3 +21,19 @@ output "cluster_security_group_id" {
   description = "Security group ID attached to the SKS nodepool instances."
   value       = module.cluster.this_security_group_id
 }
+
+output "kubernetes_host" {
+  value = local.kubernetes.host
+}
+
+output "kubernetes_cluster_ca_certificate" {
+  value = local.kubernetes.cluster_ca_certificate
+}
+
+output "kubernetes_client_key" {
+  value = local.kubernetes.client_key
+}
+
+output "kubernetes_client_certificate" {
+  value = local.kubernetes.client_certificate
+}
