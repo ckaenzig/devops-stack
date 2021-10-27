@@ -17,6 +17,11 @@ output "nlb_ip_address" {
   value = var.create_nlb ? exoscale_nlb.this[0].ip_address : null
 }
 
+output "cluster_security_group_id" {
+  description = "Security group ID attached to the SKS nodepool instances."
+  value       = module.cluster.this_security_group_id
+}
+
 output "kubernetes_host" {
   value = local.kubernetes.host
 }
