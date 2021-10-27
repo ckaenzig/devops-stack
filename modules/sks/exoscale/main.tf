@@ -53,6 +53,8 @@ module "cluster" {
   zone               = var.zone
 
   nodepools = local.nodepools
+
+  node_ports_world_accessible = var.node_ports_world_accessible
 }
 
 resource "exoscale_nlb" "this" {
