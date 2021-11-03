@@ -5,11 +5,6 @@ apps:
   metrics-server:
     enabled: false
 
-argo-cd:
-  server:
-    extraArgs:
-      - "--insecure"
-
 cert-manager:
   tlsCrt: "${root_cert}"
   tlsKey: "${root_key}"
