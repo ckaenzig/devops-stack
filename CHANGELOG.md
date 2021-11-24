@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.50.0](https://www.github.com/ckaenzig/devops-stack/compare/v0.49.0...v0.50.0) (2021-11-24)
+
+
+### Features
+
+* **docs:** improve KinD docs ([#820](https://www.github.com/ckaenzig/devops-stack/issues/820)) ([62fab9f](https://www.github.com/ckaenzig/devops-stack/commit/62fab9f89260a1d4938688afa1e29133aa93d988))
+* **sks:** add variable to control SG rule to node ports ([276a4a9](https://www.github.com/ckaenzig/devops-stack/commit/276a4a9801c455b58119f0f382eb138c38cba9a8))
+* **sks:** expose k8s cluster credentials in outputs ([fe73e58](https://www.github.com/ckaenzig/devops-stack/commit/fe73e58855361c1ac59147a6a5a850dad7bbae3c))
+* **sks:** make NLB creation optional ([c39e5d7](https://www.github.com/ckaenzig/devops-stack/commit/c39e5d7c1723b5886f6cee3907e8fe5966548375))
+
 ## [0.49.0](https://www.github.com/camptocamp/devops-stack/compare/v0.48.0...v0.49.0) (2021-11-19)
 
 
